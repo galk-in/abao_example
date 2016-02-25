@@ -1,0 +1,44 @@
+#%RAML 0.8
+title: Friends API
+baseUri: https://localhost:3000/
+protocols: [HTTP]
+version: v1
+schemas:
+ - user: |
+    {
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["firstName", "lastName"]
+    }
+mediaType: application/json
+/users:
+  get:
+    description: Get users list.
+    responses:
+      200:
+  /{userId}:
+    uriParameters:
+      userId:
+        type: string
+        description: The user uuid.
+    get:
+      description: User info
+      responses:
+        200:
+          description: User info.
+          body:
+            application/json:
+              schema: user
+        404:
+          description: User not found.
+          body:
+            application/json:
