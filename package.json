@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "./node_modules/.bin/abao api.raml http://localhost:3000 --hookfiles=./test/abao/*hooks.*"
+    "test": "./node_modules/.bin/abao spec/api.raml http://localhost:3000 --hookfiles=./test/abao/*hooks.*"
   },
   "dependencies": {
     "abao": "*",
